@@ -17,21 +17,28 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
+**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
 **Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
+**Performance Goals**: [domain-specific, e.g., <200ms p95 response time, optimized database queries, or NEEDS CLARIFICATION]
+**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+1. **Code Quality Standards** (I): Implementation MUST adhere to PEP 8 style guidelines with type hints for all function signatures. Code reviews MUST validate compliance before merging.
+
+2. **Comprehensive Testing Requirements** (II): Feature MUST include unit tests with minimum 90% coverage and integration tests for all critical user flows. TDD is required for all new functionality.
+
+3. **User Experience Consistency** (III): All user interfaces MUST follow consistent design patterns. Error messages MUST be user-friendly and actionable. API responses MUST maintain consistent structure.
+
+4. **Performance Optimization** (IV): Feature MUST meet defined performance benchmarks: API response times under 200ms for 95% of requests. Performance tests MUST be included for any feature that could impact system responsiveness.
+
+5. **Security by Design** (V): Implementation MUST follow security best practices including input validation, output encoding, and protection against OWASP Top 10 vulnerabilities.
 
 ## Project Structure
 
@@ -56,7 +63,6 @@ specs/[###-feature]/
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
 ├── models/
 ├── services/
@@ -67,28 +73,6 @@ tests/
 ├── contract/
 ├── integration/
 └── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
 ```
 
 **Structure Decision**: [Document the selected structure and reference the real
